@@ -27,6 +27,9 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+// Prefijo de ruta para imágenes: vacío en local, '/MagicLuz' en GitHub Pages
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 // Custom Cursor Component
 function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
@@ -244,7 +247,7 @@ function HeroSection() {
           ref={imageRef}
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: 'url(/hero-castle.png)',
+            backgroundImage: `url(${BASE_PATH}/hero-castle.png)`,
           }}
         />
         
@@ -380,7 +383,7 @@ function ExperienceCard({ title, description, image, icon, delay = 0 }: Experien
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${BASE_PATH}${image})` }}
       />
       
       {/* Gradient Overlay */}
@@ -765,7 +768,7 @@ function TestimonialsSection() {
             <div className="flex items-center justify-center gap-4">
               <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#FF3366]/50">
                 <img 
-                  src="/testimonial-family.png" 
+                  src={`${BASE_PATH}/testimonial-family.png`} 
                   alt="María González"
                   className="w-full h-full object-cover"
                 />
@@ -790,7 +793,7 @@ function ContactSection() {
       <div 
         className="absolute inset-0 opacity-20"
         style={{ 
-          backgroundImage: 'url(/contact-travel.png)',
+          backgroundImage: `url(${BASE_PATH}/contact-travel.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -908,7 +911,7 @@ function Footer() {
       <div 
         className="absolute inset-0 opacity-100"
         style={{ 
-          backgroundImage: 'url(/footer.webp)',
+          backgroundImage: `url(${BASE_PATH}/footer.webp)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center bottom',
         }}
